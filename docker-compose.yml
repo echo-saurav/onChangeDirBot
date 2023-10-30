@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  on-change-script:
+    container_name: onChangeScript
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - WEB_HOOK=${WEB_HOOK}
+    volumes:
+      - ~/media/:/watchDir:ro
+      - ./scripts:/scripts:ro
+
+
+
