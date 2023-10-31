@@ -4,7 +4,7 @@
 watch_dir="/watchDir"
 
 # Custom command to execute on change
-custom_command="/scripts/onChange.sh"
+custom_command="/app/scripts/onChange.sh"
 
 echo "api $WEB_HOOK"
 echo "start watcher..."
