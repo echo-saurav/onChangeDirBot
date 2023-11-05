@@ -4,9 +4,11 @@ echo "on change $(date) $2 $3 $4"
 content=""
 echo $content
 
-orange=13517588
+orange=16751892
 red=15401222
 green=11258402
+purple=5707375
+blue=1811455
 
 color=$orange
 title="Dir Change"
@@ -18,7 +20,7 @@ case $2 in
     "CREATE,ISDIR")
         echo "Directory created: $dir/$file"
         description="Directory created: $dir/$file"
-        color=$orange
+        color=$purple
         title="Directory created"
         ;;
     "CREATE")
@@ -44,6 +46,18 @@ case $2 in
         description="File deleted: $dir/$file"
         title="File deleted"
         color=$red
+        ;;
+    "MOVED_TO")
+        echo "File or directory moved to: $dir/$file"
+        description="File or directory moved to: $dir/$file"
+        title="File or directory moved"
+        color=$blue
+        ;;
+    "MOVED_FROM")
+        echo "File or directory moved from: $dir/$file"
+        description="File or directory moved from: $dir/$file"
+        title="File or directory moved"
+        color=$blue
         ;;
 esac
 
