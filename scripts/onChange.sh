@@ -11,8 +11,8 @@ purple=5707375
 blue=1811455
 
 color=$orange
-title="Dir Change"
-description="description"
+title=""
+description=""
 dir=$3
 file=$4
 
@@ -61,23 +61,35 @@ case $2 in
         ;;
 esac
 
-json_payload='{
-  "username": "onChangeScript",
-  "avatar_url": "https://i.imgur.com/4M34hi2.png",
-  "content": "'"$content"'",
-  "embeds": [
-    {
-      "color": "'"$color"'",
-      "title": "'$title'",
-      "description": "'$description'"
-    }
-  ]
-}'
+if [ ! -z "$title" ] && [ ! -z "$description" ];then
+
+  json_payload='{
+    "username": "onChangeDetection",
+    "avatar_url": "https://i.imgur.com/4M34hi2.png",
+    "content": "'"$content"'",
+    "embeds": [
+      {
+        "color": "'"$color"'",
+        "title": "'$title'",
+        "description": "'$description'"
+      }
+    ]
+  }'
 
 
-curl -i -H "Accept: application/json" \
-        -H "Content-Type:application/json" \
-        -X POST \
-        --data "$json_payload" \
-        "$1"
+  curl -i -H "Accept: application/json" \
+          -H "Content-Type:application/json" \
+          -X POST \
+          --data "$json_payload" \
+          "$1"
+
+fi
+
+
+
+
+
+
+
+
 

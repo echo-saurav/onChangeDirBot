@@ -20,12 +20,18 @@ do
     # if modify event is calling back to back two time it will not triggerd 
     # i need this because when some file is downloading it keep triggering the modify event
     if [ "$event" == "MODIFY" ] && [ "$last_modified_file" != "$directory/$file" ]; then
+
       sh "$custom_command" $WEB_HOOK $event $directory $file
       last_modified_file="$directory/$file"
+      echo "event: $last_modified_file , first modify event"
+
     # reset last mod file if its not modify event
     elif [ "$event" != "MODIFY" ]; then
+
       sh "$custom_command" $WEB_HOOK $event $directory $file
       last_modified_file=""
+      echo "event: reset last modify"
+
     fi
 
 done
